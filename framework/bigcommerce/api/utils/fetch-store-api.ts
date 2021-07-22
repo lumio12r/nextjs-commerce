@@ -1,13 +1,13 @@
 import type { RequestInit, Response } from '@vercel/fetch'
-import { provider } from '..'
+import type { BigcommerceConfig } from '../index'
 import { BigcommerceApiError, BigcommerceNetworkError } from './errors'
 import fetch from './fetch'
 
-export default async function fetchStoreApi<T>(
+const fetchStoreApi = <T>(getConfig: () => BigcommerceConfig) => async (
   endpoint: string,
   options?: RequestInit
-): Promise<T> {
-  const { config } = provider
+): Promise<T> => {
+  const config = getConfig()
   let res: Response
 
   try {
@@ -51,6 +51,7 @@ export default async function fetchStoreApi<T>(
   // If something was removed, the response will be empty
   return res.status === 204 ? null : await res.json()
 }
+export default fetchStoreApi
 
 function getRawHeaders(res: Response) {
   const headers: { [key: string]: string } = {}
