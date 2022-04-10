@@ -48,6 +48,10 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         setSelectedOptions={setSelectedOptions}
       />
       <Text
+        className="short_description"
+        html={product.meta_description}
+      />
+      <Text
         className="pb-4 break-words w-full max-w-xl"
         html={product.descriptionHtml || product.description}
       />
