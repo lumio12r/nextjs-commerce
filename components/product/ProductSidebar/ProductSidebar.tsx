@@ -10,7 +10,7 @@ import {
   SelectedOptions,
 } from '../helpers'
 
-type ProductExtended {
+type ProductExtended = {
   meta_description?: string
 }
 
