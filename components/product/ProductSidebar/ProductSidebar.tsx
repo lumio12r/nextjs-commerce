@@ -10,8 +10,14 @@ import {
   SelectedOptions,
 } from '../helpers'
 
+type ProductExtended {
+  meta_description?: string
+}
+
+type ConnectedProduct = ProductExtended & Product
+
 interface ProductSidebarProps {
-  product: Product
+  product: ConnectedProduct
   className?: string
 }
 
